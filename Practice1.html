@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.min.js"></script>
+    <script type="text/javascript" src="Scripts/practice1Controller.js"></script>
+    <title>Practice1</title>
+</head>
+
+<body>
+    <div ng-controller="alertControl">
+        <label for="num">編號：</label>
+        <input type="text" ng-model="modelNumber" name="num" id="num" />
+        <label for="name">名稱：</label>
+        <input type="text" ng-model="modelName" name="name" id="name" />
+        <br />
+        <button ng-click="toAlert();">查詢</button>
+        <button ng-click="toClear()">清除</button>
+    </div>
+</body>
+
+</html>

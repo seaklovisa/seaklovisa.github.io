@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css">
+    <script type="text/javascript" src="Scripts/Practice2Controller.js"></script>
+    <title>Practice2</title>
+    <style rel="stylesheet">
+    .sortorder.reverse:after {
+        content: '\25bc';
+    }
+    
+    .sortorder:after {
+        content: '\25b2';
+    }
+    </style>
+</head>
+
+<body>
+    <div ng-controller="tableController">
+        <label for="modelSearch"></label>
+        <input type="text" ng-model="search.$" id="modelSearch">
+        <label for="modelName">名稱：</label>
+        <input type="text" ng-model="search.name" id="modelName" />
+        <label for="modelSaving">存款：</label>
+        <input type="text" ng-model="search.saving" id="modelSaving" />
+        <hr />
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th ng-click="toOrder('num');">編號
+                        <span class="sortorder" ng-show="propertyName === 'num'" ng-class="{reverse: reverse}"></span>
+                    </th>
+                    <th ng-click="toOrder('name');">名稱
+                        <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
+                    </th>
+                    <th ng-click="toOrder('saving');">存款
+                        <span class="sortorder" ng-show="propertyName === 'saving'" ng-class="{reverse: reverse}"></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="member in members | filter:search" ng-dblclick="member.editing = true;">
+                    <td><span ng-hide="member.editing">{{ member.num }}</span>
+                        <input type="text" ng-model="member.num" ng-show="member.editing" />
+                    </td>
+                    <td><span ng-hide="member.editing">{{ member.name }}</span>
+                        <input type="text" ng-model="member.name" ng-show="member.editing" />
+                    </td>
+                    <td><span ng-hide="member.editing">{{ member.saving |number:0 }}</span>
+                        <input type="number" ng-model="member.saving" ng-show="member.editing" />
+                        <button class="btn" ng-show="member.editing" ng-click="member.editing = false;">更新</button>
+                        <button class="close" ng-click="remove($index);" ng-hide="member.editing">&times</button>
+                    </td>
+                </tr>
+                <tr ng-show="toAdd">
+                    <td>
+                        <input type="text" ng-model="modelAddNum" />
+                    </td>
+                    <td>
+                        <input type="text" ng-model="modelAddName" />
+                    </td>
+                    <td>
+                        <input type="number" ng-model="modelAddSaving" />
+                        <button ng-click="insert();toAdd = false;" class="btn">存檔</button>
+                        <button ng-click="toAdd = false;" class="btn">取消</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button ng-click="toAdd = true;" class="btn">新增</button>
+    </div>
+    ∮↖雙擊可編輯，標題可排序♂∮
+</body>
+
+</html>

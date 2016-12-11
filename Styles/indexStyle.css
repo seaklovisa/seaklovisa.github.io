@@ -1,0 +1,32 @@
+div {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+#header {
+    border: 1px outset blue;
+    max-width: 100%;
+}
+
+#outerDiv {
+    border: 1px outset red;
+    margin: 0 auto;
+    bottom: 0px;
+    max-width: 1024px;
+}
+
+#innerDiv {
+    border: 1px outset green;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+ul {
+    border: 1px outset blue;
+    list-style-type: none;
+}
+
+ul > li > div {
+    background-color: #C0C0C0;
+}
