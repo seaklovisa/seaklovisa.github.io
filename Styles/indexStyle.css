@@ -5,28 +5,48 @@ div {
 }
 
 #header {
-    border: 1px outset blue;
     max-width: 100%;
 }
 
 #outerDiv {
-    border: 1px outset red;
     margin: 0 auto;
     bottom: 0px;
     max-width: 1024px;
 }
 
 #innerDiv {
-    border: 1px outset green;
     margin: 0 auto;
     max-width: 600px;
+    text-align: center;
 }
 
 ul {
-    border: 1px outset blue;
     list-style-type: none;
+    display: inline-block;
 }
 
-ul > li > div {
-    background-color: #C0C0C0;
+
+/*使li之間有間距-*/
+
+ul > li {
+    padding-top: 10px;
+}
+
+ul > li > div {}
+
+
+/*背景*/
+
+.bg {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -9999;
+}
+
+body {
+    background-image: url(../images/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
