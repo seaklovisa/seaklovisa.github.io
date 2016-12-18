@@ -1,0 +1,27 @@
+div {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+#outerDiv {
+    margin: 0 auto;
+    bottom: 0px;
+    max-width: 1024px;
+}
+
+#innerDiv {
+    margin: 0 auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+}
+
+#innerDiv .title {
+    font-family: "Times New Roman";
+    font-weight: bold;
+    font-size: 14pt;
+}

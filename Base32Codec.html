@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="Styles/base32CodecStyle.css" rel="stylesheet">
+    <script type="text/javascript" src="Scripts/jquery-2.1.3.min.js"></script>
+    <title>Base32Codec</title>
+</head>
+
+<body>
+    <div id="outerDiv">
+        <div id="innerDiv">
+            <div>
+                <div class="title">Encropter</div>
+                <textarea id="txtAreaEncrypt" rows="5" cols="15" placeholder="Input for base32Encrypt"></textarea>
+                <button id="btnEncrypt">Encrypt</button>
+                <textarea id="txtAreaEncryptResult" rows="5" cols="15" readonly="readonly"></textarea>
+            </div>
+            <div>
+                <div class="title">Decropter</div>
+                <textarea id="txtAreaDecrypt" rows="5" cols="15" placeholder="Input for base32Decrypt"></textarea>
+                <button id="btnDecrypt">Decrypt</button>
+                <textarea id="txtAreaDecryptResult" rows="5" cols="15" readonly="readonly"></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+$(function() {
+    $("#txtAreaEncrypt").click(function() {
+        $(this).attr("placeholder", "");
+        $(this).one("blur", function() {
+            $(this).attr("placeholder", "Input for base32Encrypt");
+        });
+    });
+
+    $("#txtAreaDecrypt").click(function() {
+        $(this).attr("placeholder", "");
+        $(this).one("blur", function() {
+            $(this).attr("placeholder", "Input for base32Decrypt");
+        });
+    });
+
+    $("#btnEncrypt").click(function() {
+        $.ajax({
+                //http://localhost:3836/CodecServiceM.asmx/Base32Encryptor
+                url: 'http://seakopersonal.apphb.com/CodecServiceM.asmx/Base32Encryptor',
+                type: 'GET',
+                contentType: "application/json; charset=utf-8",
+                data: {
+                    input: $("#txtAreaEncrypt").val()
+                },
+                dataType: 'jsonp',
+                crossDomain: true
+            })
+            .success(function(data) {
+                $("#txtAreaEncryptResult").val(data.result);
+            });
+    });
+
+    $("#btnDecrypt").click(function() {
+        $.ajax({
+                //ttp://localhost:3836/CodecServiceM.asmx/Base32Decryptor
+                url: 'http://seakopersonal.apphb.com/CodecServiceM.asmx/Base32Decryptor',
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                data: {
+                    input: $("#txtAreaDecrypt").val()
+                },
+                dataType: 'jsonp',
+                corssDomain: true
+            })
+            .success(function(data) {
+                $("#txtAreaDecryptResult").val(data.result);
+            });
+    })
+});
+</script>
