@@ -46,7 +46,7 @@ $(function() {
     $("#btnEncrypt").click(function() {
         $.ajax({
                 //http://localhost:3836/CodecServiceM.asmx/Base32Encryptor
-                url: 'http://seakopersonal.apphb.com/CodecServiceM.asmx/Base32Encryptor',
+                url: '//seakopersonal.apphb.com/CodecServiceM.asmx/Base32Encryptor',
                 type: 'GET',
                 contentType: "application/json; charset=utf-8",
                 data: {
@@ -63,7 +63,7 @@ $(function() {
     $("#btnDecrypt").click(function() {
         $.ajax({
                 //ttp://localhost:3836/CodecServiceM.asmx/Base32Decryptor
-                url: 'http://seakopersonal.apphb.com/CodecServiceM.asmx/Base32Decryptor',
+                url: '//seakopersonal.apphb.com/CodecServiceM.asmx/Base32Decryptor',
                 type: 'GET',
                 contentType: 'application/json; charset=utf-8',
                 data: {
